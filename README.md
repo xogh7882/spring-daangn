@@ -27,7 +27,7 @@
 
 #### 위에서 살펴본 기능을 중심으로 DB 모델링 및 ERD 작성
 
-![alt text](image.png)
+![alt text](/image/image.png)
 
 - 좋아요 테이블을 회원과 게시글 사이에서 연결
 
@@ -46,12 +46,12 @@
 <br>
 <br>
 
-#### GPT 및 다른 테이블을 참고하여 개선 한 내용
+#### 약간 개선 한 내용
 1. location 테이블 분리
 - 중복되는 내용을 하나의 테이블로 분리
 - 위치정보를 사용하기에 더욱 적합할 것으로 예상
 
-![alt text](image-1.png)
+![alt text](/image/image-1.png)
 
 
 <br>
@@ -60,7 +60,7 @@
 - DM 테이블에 대화 상대 및 대화 내용을 함께 저장하는 것을 방지
 
 
-![alt text](image-3.png)
+![alt text](/image/image-3.png)
 
 
 <br>
@@ -79,13 +79,13 @@
 #### Repository 단위 테스트
 - 테이블 생성 성공
 
-![alt text](image-4.png)
+![alt text](/image/image-4.png)
 
 <br>
 
 - select, insert 등 SQL문 테스트 성공
 
-![alt text](image-5.png)
+![alt text](/image/image-5.png)
 
 <br>
 
@@ -96,19 +96,19 @@
 
 - repository 인터페이스에 메서드 생성
 
-![alt text](image-6.png)
+![alt text](/image/image-6.png)
 
 <br>
 
 - 각 메서드 테스트
 
-![alt text](image-7.png)
+![alt text](/image/image-7.png)
 
 <br>
 
 - 테스트 성공
 
-![alt text](image-8.png)
+![alt text](/image/image-8.png)
 
 
 <br>
@@ -175,7 +175,13 @@ ex) 메서드 이름에
 <br>
 <hr>
 
-#### 2) 질문을 제대로 이해를 못했습니다...
+#### 2) EntityManager는 요청마다 새로 만들어진다. 근데 SimpleJpaRepository는 싱글톤이니까 처음 한 번만 EntityManager를 받는다..?
+
+- EntityManager를 바로 주입하는 게 아니라, Proxy 객체를 주입
+
+- 실제로는 요청마다 새로운 진짜 EntityManager를 생성해서 연결
+
+- SimpleJpaRepository 입장에선 항상 같은 걸 쓰는 것처럼 보이지만, 내부에서는 요청마다 새로운 DB 연결을 사용
 
 <br>
 <br>
@@ -263,7 +269,7 @@ JOIN member m ON t.id = m.team_id;
  Team(id=1, members=[m1, m2, m3])]
 ```
 
-![alt text](image-9.png) ![alt text](image-10.png) ![alt text](image-11.png)
+![alt text](/image/image-9.png) ![alt text](/image/image-10.png) ![alt text](/image/image-11.png)
 
 → 이걸 JPA에서 Team만 select하고 fetch join을 하면 같은 Team 객체가 3번 생성
 
