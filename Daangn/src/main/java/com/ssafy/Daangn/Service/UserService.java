@@ -1,12 +1,12 @@
 package com.ssafy.Daangn.Service;
 
 import com.ssafy.Daangn.Domain.User;
+import com.ssafy.Daangn.Exception.UserNotFoundException;
 import com.ssafy.Daangn.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,8 +20,10 @@ public class UserService {
     }
 
     // 사용자 ID로 사용자 조회
-    public Optional<User> findUserByUserId(String userId) {
-        return userRepository.findByUserId(userId);
+    public User getUserByUserId(String userId) {
+        return userRepository.findByUserId(userId)
+                .orElseThrow(() -> new UserNotFoundException(
+                        "사용자를 찾을 수 없습니다: " + userId));
     }
 
     // 닉네임으로 사용자 검색

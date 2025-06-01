@@ -1,4 +1,9 @@
+server:
+  port: ${SERVER_PORT}
+
 spring:
+  config:
+    import: optional:file:.env[.properties]
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: ${JDBC_URL}
@@ -10,7 +15,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: create
-    show_sql: false
+    show_sql: ${JPA_SHOW_SQL}
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
