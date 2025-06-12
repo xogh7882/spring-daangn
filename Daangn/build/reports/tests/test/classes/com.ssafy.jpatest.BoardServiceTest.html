@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - BoardServiceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>BoardServiceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.ssafy.jpatest.html">com.ssafy.jpatest</a> &gt; BoardServiceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.060s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+<li>
+<a href="#">Standard error</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testSell()</td>
+<td class="success">1.060s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>22:42:15.975 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.ssafy.jpatest.BoardServiceTest]: BoardServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+22:42:16.164 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.ssafy.jpatest.JpaTestApplication for test class com.ssafy.jpatest.BoardServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.5)
+
+2025-05-15T22:42:16.728+09:00  INFO 25564 --- [    Test worker] com.ssafy.jpatest.BoardServiceTest       : Starting BoardServiceTest using Java 23.0.2 with PID 25564 (started by xogh7 in C:\Users\xogh7\IdeaProjects\ServiceTest)
+2025-05-15T22:42:16.728+09:00  INFO 25564 --- [    Test worker] com.ssafy.jpatest.BoardServiceTest       : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-05-15T22:42:17.672+09:00  INFO 25564 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-05-15T22:42:17.767+09:00  INFO 25564 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 6 JPA repository interfaces.
+2025-05-15T22:42:18.405+09:00  INFO 25564 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-05-15T22:42:18.539+09:00  INFO 25564 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.13.Final
+2025-05-15T22:42:18.591+09:00  INFO 25564 --- [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-05-15T22:42:19.012+09:00  INFO 25564 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-05-15T22:42:19.040+09:00  INFO 25564 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-05-15T22:42:19.453+09:00  INFO 25564 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5aac6f9f
+2025-05-15T22:42:19.453+09:00  INFO 25564 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-05-15T22:42:19.514+09:00  WARN 25564 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-05-15T22:42:19.516+09:00  WARN 25564 --- [    Test worker] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-05-15T22:42:19.540+09:00  INFO 25564 --- [    Test worker] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-05-15T22:42:20.905+09:00  INFO 25564 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-05-15T22:42:20.925+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table board drop foreign key FKbupcyrwgxgkgvtvi821detnc0
+2025-05-15T22:42:20.942+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table board drop foreign key FKcw8mudt85ktn7ljyhvdmdg13a
+2025-05-15T22:42:20.951+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table dm drop foreign key FKmj7y84k11bi2jp33ltbq301oc
+2025-05-15T22:42:20.959+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table dm_room drop foreign key FKl3epysetw93eih82ph6brexiy
+2025-05-15T22:42:20.966+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table dm_room drop foreign key FKbmh4m5nmaj4jnmogursxww4ng
+2025-05-15T22:42:20.974+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table liked drop foreign key FKbcbvsyarx4vuemw17lud1njsp
+2025-05-15T22:42:20.974+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table liked drop foreign key FK5xgn11ssk69gkob8frm7smkjc
+2025-05-15T22:42:20.992+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table user drop foreign key FKi5pwflgr7nq3b3vv6r70q48dd
+2025-05-15T22:42:20.999+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : drop table if exists board
+2025-05-15T22:42:21.010+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : drop table if exists dm
+2025-05-15T22:42:21.018+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : drop table if exists dm_room
+2025-05-15T22:42:21.024+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : drop table if exists liked
+2025-05-15T22:42:21.029+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : drop table if exists location_table
+2025-05-15T22:42:21.029+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : drop table if exists user
+2025-05-15T22:42:21.042+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : create table board (is_sell bit, like_count integer, location_id integer, price integer, user_pk integer, view integer, board_id bigint not null auto_increment, regist_time datetime(6), category varchar(255), image varchar(255), info varchar(255), title varchar(255), primary key (board_id)) engine=InnoDB
+2025-05-15T22:42:21.064+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : create table dm (id integer not null auto_increment, room_id integer, send_time datetime(6), content varchar(255), image varchar(255), primary key (id)) engine=InnoDB
+2025-05-15T22:42:21.075+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : create table dm_room (room_id integer not null auto_increment, user_pk integer, board_id bigint, primary key (room_id)) engine=InnoDB
+2025-05-15T22:42:21.091+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : create table liked (is_like bit, user_id integer, board_id bigint, id bigint not null auto_increment, primary key (id)) engine=InnoDB
+2025-05-15T22:42:21.098+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : create table location_table (location_id integer not null auto_increment, location_name varchar(255), primary key (location_id)) engine=InnoDB
+2025-05-15T22:42:21.109+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : create table user (degree float(53), id integer not null auto_increment, location_id integer, image varchar(255), name varchar(255), nickname varchar(255), password varchar(255), user_id varchar(255), primary key (id)) engine=InnoDB
+2025-05-15T22:42:21.124+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table board add constraint FKbupcyrwgxgkgvtvi821detnc0 foreign key (location_id) references location_table (location_id)
+2025-05-15T22:42:21.174+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table board add constraint FKcw8mudt85ktn7ljyhvdmdg13a foreign key (user_pk) references user (id)
+2025-05-15T22:42:21.208+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table dm add constraint FKmj7y84k11bi2jp33ltbq301oc foreign key (room_id) references dm_room (room_id)
+2025-05-15T22:42:21.254+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table dm_room add constraint FKl3epysetw93eih82ph6brexiy foreign key (board_id) references board (board_id)
+2025-05-15T22:42:21.284+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table dm_room add constraint FKbmh4m5nmaj4jnmogursxww4ng foreign key (user_pk) references user (id)
+2025-05-15T22:42:21.337+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table liked add constraint FKbcbvsyarx4vuemw17lud1njsp foreign key (board_id) references board (board_id)
+2025-05-15T22:42:21.386+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table liked add constraint FK5xgn11ssk69gkob8frm7smkjc foreign key (user_id) references user (id)
+2025-05-15T22:42:21.430+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : alter table user add constraint FKi5pwflgr7nq3b3vv6r70q48dd foreign key (location_id) references location_table (location_id)
+2025-05-15T22:42:21.469+09:00  INFO 25564 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-05-15T22:42:22.065+09:00  INFO 25564 --- [    Test worker] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-05-15T22:42:23.455+09:00  WARN 25564 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-05-15T22:42:24.092+09:00  INFO 25564 --- [    Test worker] com.ssafy.jpatest.BoardServiceTest       : Started BoardServiceTest in 7.734 seconds (process running for 8.987)
+2025-05-15T22:42:24.660+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : insert into location_table (location_name) values (?)
+2025-05-15T22:42:24.719+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : insert into user (degree,image,location_id,name,nickname,password,user_id) values (?,?,?,?,?,?,?)
+2025-05-15T22:42:24.735+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : insert into board (category,image,info,is_sell,like_count,location_id,price,regist_time,user_pk,title,view) values (?,?,?,?,?,?,?,?,?,?,?)
+2025-05-15T22:42:24.745+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : insert into board (category,image,info,is_sell,like_count,location_id,price,regist_time,user_pk,title,view) values (?,?,?,?,?,?,?,?,?,?,?)
+2025-05-15T22:42:24.758+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : insert into board (category,image,info,is_sell,like_count,location_id,price,regist_time,user_pk,title,view) values (?,?,?,?,?,?,?,?,?,?,?)
+
+======== 판매 상태 변경 테스트 시작 ========
+
+1. 초기 판매중 게시글 조회
+2025-05-15T22:42:24.956+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : select b1_0.board_id,b1_0.category,b1_0.image,b1_0.info,b1_0.is_sell,b1_0.like_count,l1_0.location_id,l1_0.location_name,b1_0.price,b1_0.regist_time,s1_0.id,s1_0.degree,s1_0.image,s1_0.location_id,s1_0.name,s1_0.nickname,s1_0.password,s1_0.user_id,b1_0.title,b1_0.view from board b1_0 left join location_table l1_0 on l1_0.location_id=b1_0.location_id left join user s1_0 on s1_0.id=b1_0.user_pk where b1_0.is_sell=?
+1 | 게시글1 | 10000 | false
+2 | 게시글2 | 20000 | false
+
+======== 판매 상태 변경 테스트 시작 ========
+
+2025-05-15T22:42:24.998+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : select b1_0.board_id,b1_0.category,b1_0.image,b1_0.info,b1_0.is_sell,b1_0.like_count,b1_0.location_id,b1_0.price,b1_0.regist_time,b1_0.user_pk,b1_0.title,b1_0.view from board b1_0 where b1_0.title=?
+2025-05-15T22:42:25.018+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : select b1_0.board_id,b1_0.category,b1_0.image,b1_0.info,b1_0.is_sell,b1_0.like_count,b1_0.location_id,b1_0.price,b1_0.regist_time,b1_0.user_pk,b1_0.title,b1_0.view from board b1_0 where b1_0.board_id=?
+2025-05-15T22:42:25.030+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : update board set category=?,image=?,info=?,is_sell=?,like_count=?,location_id=?,price=?,regist_time=?,user_pk=?,title=?,view=? where board_id=?
+2. 2번 게시글 판매 완료로 변경
+========== 판매 중 게시글 =============
+2025-05-15T22:42:25.051+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : select b1_0.board_id,b1_0.category,b1_0.image,b1_0.info,b1_0.is_sell,b1_0.like_count,l1_0.location_id,l1_0.location_name,b1_0.price,b1_0.regist_time,s1_0.id,s1_0.degree,s1_0.image,s1_0.location_id,s1_0.name,s1_0.nickname,s1_0.password,s1_0.user_id,b1_0.title,b1_0.view from board b1_0 left join location_table l1_0 on l1_0.location_id=b1_0.location_id left join user s1_0 on s1_0.id=b1_0.user_pk where b1_0.is_sell=?
+게시글1 | 10000 | false
+========== 판매 완료 게시글 =============
+2025-05-15T22:42:25.062+09:00 DEBUG 25564 --- [    Test worker] org.hibernate.SQL                        : select b1_0.board_id,b1_0.category,b1_0.image,b1_0.info,b1_0.is_sell,b1_0.like_count,l1_0.location_id,l1_0.location_name,b1_0.price,b1_0.regist_time,s1_0.id,s1_0.degree,s1_0.image,s1_0.location_id,s1_0.name,s1_0.nickname,s1_0.password,s1_0.user_id,b1_0.title,b1_0.view from board b1_0 left join location_table l1_0 on l1_0.location_id=b1_0.location_id left join user s1_0 on s1_0.id=b1_0.user_pk where b1_0.is_sell=?
+게시글2 | 20000 | true
+게시글3 | 30000 | true
+</pre>
+</span>
+</div>
+<div class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build what is described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org/mockito/Mockito.html#0.3
+WARNING: A Java agent has been loaded dynamically (C:\Users\xogh7\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.15.11\a38b16385e867f59a641330f0362ebe742788ed8\byte-buddy-agent-1.15.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.13</a> at 2025. 5. 15. 오후 10:42:25</p>
+</div>
+</div>
+</body>
+</html>

@@ -4,6 +4,9 @@ import com.ssafy.Daangn.Domain.User;
 import com.ssafy.Daangn.Exception.UserNotFoundException;
 import com.ssafy.Daangn.Repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,6 +52,30 @@ public class UserService {
     // 사용자 삭제
     public void deleteUser(Integer id) {
         userRepository.deleteById(id);
+    }
+
+
+    // JWT 토큰으로 내 정보 찾기
+    public User getMyProfile() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication == null || !authentication.isAuthenticated()) {
+            throw new IllegalArgumentException("인증 정보가 없어!");
+        }
+
+        Object principal = authentication.getPrincipal();
+        if(!(principal instanceof UserDetails)) {
+            throw new IllegalArgumentException("잘못된 인증 정보");
+        }
+
+        UserDetails userDetails = (UserDetails) principal;
+        String userId = userDetails.getUsername();
+
+
+        User user = userRepository.findById(Integer.parseInt(userId))
+                .orElseThrow(() -> new UserNotFoundException("사용자가 없습니다."));
+
+        return user;
     }
 
 }

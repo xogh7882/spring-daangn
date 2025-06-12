@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @Component
 public class TokenProvider implements InitializingBean {
     private static final String AUTHORITIES_KEY = "auth";
-    private static final long expirationTime = 1000 * 60 * 30;
+    private static final long expirationTime = 1000 * 60 * 30; // 30분
 
     private final String secret;
     private final UserDetailsService userDetailsService;
@@ -52,21 +52,24 @@ public class TokenProvider implements InitializingBean {
         return null;
     }
 
-
+    // JWT Token 을 만들거야
     public String createAccessToken(Integer id, Authentication authentication) {
+        // 사용자 권한 목록을 가져오자 ( authorities = "ROLE_USER" )
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
 
+        // Token 만료 시간 설정 ( expirationTime = 30분으로 설정 )
         long now = (new Date().getTime());
         Date tokenExpiresIn = new Date(now + expirationTime);
 
+        // JJWT 라이브러리의 JWT 생성 빌더 패턴 사용
         return Jwts.builder()
-                .setSubject(id.toString())
-                .claim(AUTHORITIES_KEY, authorities)
-                .setExpiration(tokenExpiresIn)
-                .signWith(key, SignatureAlgorithm.HS512)
-                .compact();
+                .setSubject(id.toString())           // subject : JWT 토큰이 누구인지 식별
+                .claim(AUTHORITIES_KEY, authorities) // claim : 사용자 권한 정보
+                .setExpiration(tokenExpiresIn)       // expiration : 만료 시간
+                .signWith(key, SignatureAlgorithm.HS512)  // signwith : 토큰 서명 ( 비밀키 )
+                .compact(); // 최종 JWT 문자열 생성
     }
 
     public String getTokenUserId(String token){

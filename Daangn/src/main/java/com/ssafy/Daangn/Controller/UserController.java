@@ -4,12 +4,15 @@ package com.ssafy.Daangn.Controller;
 import com.ssafy.Daangn.Domain.User;
 import com.ssafy.Daangn.Service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Tag(name = "User API", description = "User API")
 @RestController
@@ -70,6 +73,27 @@ public class UserController {
             return ResponseEntity.ok(user);
         }catch (Exception e){
             return ResponseEntity.badRequest().build();
+        }
+    }
+
+
+    // 내 프로필 조회하기
+    @Operation(summary = "내 프로필 조회", security = @SecurityRequirement(name = "bearerAuth" ))
+    @GetMapping("/me")
+    public ResponseEntity<?> getMyProfile(){
+        try{
+            User myProfile = userService.getMyProfile();
+            return ResponseEntity.ok(myProfile);
+        } catch(IllegalStateException  e){
+            Map<String, Object> error = new HashMap<>();
+            error.put("code", 401);
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(401).body(error);
+        } catch(Exception e){
+            Map<String, Object> error = new HashMap<>();
+            error.put("code", 404);
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(404).body(error);
         }
     }
 }
