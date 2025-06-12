@@ -29,4 +29,4 @@ logging:
     org.hibernate.SQL: debug
 
 jwt:
-  secret: ${JWT_SECRET:Y29tLnNzYWZ5LkRhYW5nbi5qd3Quc2VjcmV0a2V5Zm9yZGV2ZWxvcG1lbnRvbmx5ZG9udHVzZWlucHJvZHVjdGlvbg==}
+  secret: ${JWT_TOKEN}
