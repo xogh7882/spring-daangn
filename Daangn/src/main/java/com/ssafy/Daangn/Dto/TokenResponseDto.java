@@ -11,7 +11,9 @@ import lombok.*;
 public class TokenResponseDto {
     private String grantType;
     private String accessToken;
+    private String refreshToken;
     private Long tokenExpiresIn;
+    private Long refreshTokenExpiresIn;
     private Integer userId;
     private String nickname;
 }

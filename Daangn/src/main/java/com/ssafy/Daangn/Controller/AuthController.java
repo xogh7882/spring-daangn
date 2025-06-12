@@ -47,4 +47,28 @@ public class AuthController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+    @Operation(summary = "토큰 갱신")
+    @PostMapping("/refresh")
+    public ResponseEntity<?> refreshToken(@RequestBody Map<String, String> request) {
+        try{
+           String refreshToken = request.get("refreshToken");
+           // Refresh Token 유효성 검사
+           if(refreshToken == null){
+               Map<String, Object> error = new HashMap<>();
+               error.put("code", 400);
+               error.put("messgae", "Refresh Token이 없음");
+               return ResponseEntity.badRequest().body(error);
+           }
+
+           // 새로운 Access Token 발급
+           TokenResponseDto tokenResponse = authService.refreshAccessToken(refreshToken);
+
+           return ResponseEntity.ok(tokenResponse);
+        } catch(Exception e){
+            Map<String, Object> error = new HashMap<>();
+            error.put("message", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
+    }
 }

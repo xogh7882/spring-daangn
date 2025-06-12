@@ -16,7 +16,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.security.SecureRandom;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 public class TokenProvider implements InitializingBean {
     private static final String AUTHORITIES_KEY = "auth";
     private static final long expirationTime = 1000 * 60 * 30; // 30분
+    private static final long RefreshTokenExpirationTime = 1000 * 60 * 60 * 24 * 7;  // 7일 ( refresh는 길게 )
 
     private final String secret;
     private final UserDetailsService userDetailsService;
@@ -124,4 +127,38 @@ public class TokenProvider implements InitializingBean {
         }
         return false;
     }
+
+    // Refresh Token 은 랜덤 문자열로 생성한다 ( 어차피 새로 발급할때만 쓸거라서 )
+    public String createRefreshToken() {
+        byte[] array = new byte[64];
+        new SecureRandom().nextBytes(array);
+        return Base64.getEncoder().encodeToString(array);
+    }
+
+    public long getAccessTokenExpirationTime() {
+        return expirationTime;
+    }
+
+    public long getRefreshTokenExpirationTime() {
+        return RefreshTokenExpirationTime;
+    }
+
+    public String getRefreshToken(HttpServletRequest request) {
+        String refreshToken = request.getHeader("Refresh-Token");
+        if(refreshToken != null && !refreshToken.isEmpty()){
+            return refreshToken;
+        }
+        return null;
+    }
+
+    // RefreshToken 유효성 검증 ( 문자열 길이와 형식만 확인 )
+    public boolean validateRefreshToken(String refreshToken) {
+        try{
+            byte[] decode = Base64.getDecoder().decode(refreshToken);
+            return decode.length == 64;
+        } catch(Exception e){
+            return false;
+        }
+    }
+
 }
