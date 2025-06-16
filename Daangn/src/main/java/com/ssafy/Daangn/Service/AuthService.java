@@ -13,12 +13,14 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AuthService {
 
     private final UserRepository userRepository;
@@ -104,11 +106,20 @@ public class AuthService {
         );
 
         String newAccessToken = tokenProvider.createAccessToken(user.getId(), authentication);
+        String newRefreshTokenStr = tokenProvider.createRefreshToken();
+
+        refreshTokenRepository.delete(refreshToken);
+
+        RefreshToken newRefreshToken = new RefreshToken();
+        newRefreshToken.setUserId(user.getId());
+        newRefreshToken.setToken(newRefreshTokenStr);
+        newRefreshToken.setExpireDate(LocalDateTime.now().plusSeconds(tokenProvider.getRefreshTokenExpirationTime()/1000));
+        refreshTokenRepository.save(newRefreshToken);
 
         return TokenResponseDto.builder()
                 .grantType("Bearer")
                 .accessToken(newAccessToken)
-                .refreshToken(refreshTokenStr)
+                .refreshToken(newRefreshTokenStr)
                 .tokenExpiresIn(tokenProvider.getAccessTokenExpirationTime()/1000)
                 .refreshTokenExpiresIn(tokenProvider.getRefreshTokenExpirationTime()/1000)
                 .userId(user.getId())
