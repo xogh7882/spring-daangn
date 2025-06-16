@@ -127,4 +127,14 @@ public class AuthService {
                 .build();
 
     }
+
+    public void logoutByRefreshToken(String refreshTokenStr) {
+        try{
+            RefreshToken refreshToken = refreshTokenRepository.findByToken(refreshTokenStr)
+                    .orElseThrow(() -> new RuntimeException("유효하지 않는 Refresh Token"));
+            refreshTokenRepository.deleteByUserId(refreshToken.getUserId());
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
