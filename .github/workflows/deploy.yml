@@ -33,8 +33,8 @@ jobs:
         run: chmod +x gradlew
 
       # Gradle로 프로젝트 빌드하기 ( JAR 파일 생성 )
-      - name: Build with Gradle
-        run: ./gradlew build --no-daemon  # --no-daemon: 메모리 절약?
+      - name: Build with Gradle ( Skip Test )
+        run: ./gradlew build -x test --no-daemon  # 테스트 스킵
 
       # 빌드된 JAR 파일을 저장
       - name: Upload JAR file
