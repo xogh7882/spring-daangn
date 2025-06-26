@@ -9,8 +9,7 @@ on:
 
 # 실행할 작업들을 순서대로 정의
 jobs:
-  # 1단계 : build & Test
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest  # 우분투 최신 버전에서 실행
     defaults:
       run:
@@ -34,31 +33,7 @@ jobs:
 
       # Gradle로 프로젝트 빌드하기 ( JAR 파일 생성 )
       - name: Build with Gradle ( Skip Test )
-        run: ./gradlew build -x test --no-daemon  # 테스트 스킵
-
-      # 빌드된 JAR 파일을 저장
-      - name: Upload JAR file
-        uses: actions/upload-artifact@v4
-        with:
-          name: jar-artifact      # 저장할 때 사용할 이름
-          path: build/libs/*.jar  # 저장할 파일 경로
-
-  # 2단계 Docker Image 생성
-  docker:
-    needs: build   # 필수조건 = build 성공
-    runs-on: ubuntu-latest
-
-    steps:
-      # 소스코드 다시 가져오기
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # 이전 단계에서 빌드한 JAR 파일 다운로드
-      - name: Download JAR file
-        uses: actions/download-artifact@v4
-        with:
-          name: jar-artifact
-          path: build/libs/
+        run: ./gradlew build -x test --no-daemon
 
       # Docker Hub에 로그인하기
       - name: Login to Docker Hub
@@ -71,18 +46,12 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: .          # Dockerfile이 있는 경로
+          context: ./Daangn          # Dockerfile이 있는 경로
           push: true          # 자동으로 push
           tags: |              # 생성할 이미지 태그들
             ${{ secrets.DOCKER_USERNAME }}/daangn:latest      
             ${{ secrets.DOCKER_USERNAME }}/daangn:${{ github.sha }} 
-          
-  # 3단계: EC2 서버에 배포
-  depoly:
-    needs: docker  # 필수조건 docker 작업 성공
-    runs-on: ubuntu-latest
 
-    steps:
       # EC2 서버에 SSH로 접속해서 배포 명령어 실행
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.0
