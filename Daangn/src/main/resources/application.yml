@@ -15,7 +15,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
-    show_sql: ${JPA_SHOW_SQL}
+    show_sql: true
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
