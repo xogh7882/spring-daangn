@@ -39,6 +39,9 @@ jobs:
       # 테스트 실행하기
       - name: Run Test
         run: ./gradlew test --no-daemon
+        env:
+          JWT_TOKEN: ${{secrets.JWT_TOKEN}}
+          SERVER_PORT: 8080
 
       # 테스트 결과 리포트
       - name: Test Result
