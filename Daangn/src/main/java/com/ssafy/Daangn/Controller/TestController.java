@@ -21,7 +21,7 @@ public class TestController {
     @GetMapping("/CICD")
     public ResponseEntity<Map<String,Object>> CICDTest(){
         Map<String,Object> response = new HashMap<>();
-        response.put("messgae", "CI/CD 배포 성공");
+        response.put("message", "CI/CD 배포 성공");
         return ResponseEntity.ok(response);
     }
 }
