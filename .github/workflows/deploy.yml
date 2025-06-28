@@ -36,9 +36,24 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      # 테스트 실행하기
+      - name: Run Test
+        run: ./gradlew test --no-daemon
+
+      # 테스트 결과 리포트
+      - name: Test Result
+        uses: dorny/test-reporter@v1
+        if: always()  # 테스트가 실패해도 항사 리포트 생성하기
+        with:
+          name: 'Test Result'
+          path: '**/build/test-results/test/TEST-*.xml'
+          reporter: 'java-junit'
+          fail-on-error: true  # 에러 발생시 전체 실패로 처리
+
+
       # Gradle로 프로젝트 빌드하기 ( JAR 파일 생성 )
-      - name: Build with Gradle ( Skip Test )
-        run: ./gradlew build -x test --no-daemon
+      - name: Build with Gradle
+        run: ./gradlew build --no-daemon
 
       # Docker Hub에 로그인하기
       - name: Login to Docker Hub
