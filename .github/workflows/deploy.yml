@@ -5,6 +5,11 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ main ]  # main 브랜치에 코드를 push 할 때
+    paths:  # 여기 경로가 바뀔때 만 실행되도록 ( READER.md 등을 수정했을 때는 실행 필요 없음 )
+      - 'Daangn/src/**'
+      - 'Daangn/build.gradle'
+      - 'Daangn/Dockerfile'
+      - '.github/workflows/**'
   workflow_dispatch:    # 수동으로 실행할 때
 
 # 실행할 작업들을 순서대로 정의
